@@ -1,0 +1,8 @@
+.vscode/
+*.swp
+__pycache__/
+yolo-coco/
+oldyolo/
+images/
+videos/ 
+output/
