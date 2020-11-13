@@ -55,7 +55,15 @@ ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
 # initialize the video stream, pointer to output video file, and
 # frame dimensions
-vs = cv2.VideoCapture(args["input"])
+
+# integer olarak sıfır vermek
+# bilgisayarın dahili kamerası üzerinden işlem yapmasına yarıyor
+# fakat --input veriyi string olarak aldığından dolayı 
+# komutu string olarak kontrol etmek zorundan kaldım
+if args['input'] == '0':
+	vs = cv2.VideoCapture(0)
+else:
+	vs = cv2.VideoCapture(args["input"])
 # kendi kameramızdan görüntü almaya çalışalım
 #vs = cv2.VideoCapture(0)
 writer = None
@@ -159,13 +167,16 @@ while True:
 				cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 			if LABELS[classIDs[i]] == 'bad':
-				print('maske tak amk')
+				#print('maske tak amk')
+				print('lütfen maske takın')
 
 			elif LABELS[classIDs[i]] == 'none':
-				print('duzgun tak maskeyi amk')
+				#print('duzgun tak maskeyi amk')
+				print('maskenizi düzgün takın')
 
 			else:
-				print('aferin amk')
+				#print('aferin amk')
+				print('maske takılı sorun yok ')
 
 
 
