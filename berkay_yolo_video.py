@@ -43,12 +43,11 @@ net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 
 """
 # to gpu
+# opencvyi gpu kullanarak compile edebiliyoruz cuda kullanıyor videolar üzerinden işlem yaparken 
+# fakat onun için cuda'nın vs hep local makinada kurulu olması lazım ben anaconda kullandığım için pek mümkün olmuyor
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
 """
-
-
-
 
 ln = net.getLayerNames()
 ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
@@ -56,8 +55,9 @@ ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
 # initialize the video stream, pointer to output video file, and
 # frame dimensions
-#vs = cv2.VideoCapture(args["input"])
-vs = cv2.VideoCapture(0)
+vs = cv2.VideoCapture(args["input"])
+# kendi kameramızdan görüntü almaya çalışalım
+#vs = cv2.VideoCapture(0)
 writer = None
 (W, H) = (None, None)
 
@@ -158,22 +158,26 @@ while True:
 			cv2.putText(frame, text, (x, y - 5),
 				cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
-	# check if the video writer is None
-	if writer is None:
-		# initialize our video writer
-		fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-		writer = cv2.VideoWriter(args["output"], fourcc, 30,
-			(frame.shape[1], frame.shape[0]), True)
+			if LABELS[classIDs[i]] == 'bad':
+				print('maske tak amk')
 
-		# some information on processing single frame
-		if total > 0:
-			elap = (end - start)
-			print("[INFO] single frame took {:.4f} seconds".format(elap))
-			print("[INFO] estimated total time to finish: {:.4f}".format(
-				elap * total))
+			elif LABELS[classIDs[i]] == 'none':
+				print('duzgun tak maskeyi amk')
 
-	# write the output frame to disk
-	writer.write(frame)
+			else:
+				print('aferin amk')
+
+
+
+
+
+
+	cv2.imshow('video amk', frame)
+	if cv2.waitKey(1) & 0xFF == ord('q'):
+		break
+
+
+
 
 # release the file pointers
 print("[INFO] cleaning up...")
