@@ -192,5 +192,5 @@ while True:
 
 # release the file pointers
 print("[INFO] cleaning up...")
-writer.release()
+#writer.release()
 vs.release()
