@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "ps-tree": "^1.2.0",
     "python-shell": "^2.0.2"
   },
   "devDependencies": {
