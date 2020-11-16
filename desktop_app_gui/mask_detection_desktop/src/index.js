@@ -8,9 +8,9 @@ const path = require("path");
 let mainWindow = null;
 let subpy = null;
 
-const PY_DIST_FOLDER = "dist-python"; // python distributable folder
-const PY_SRC_FOLDER = "web_app"; // path to the python source
-const PY_MODULE = "run_app.py"; // the name of the main module
+const PY_DIST_FOLDER = "/home/berkay/miniconda3/envs/mask_det_g/bin/python"; // python distributable folder
+const PY_SRC_FOLDER = "."; // path to the python source
+const PY_MODULE = "to_browser.py"; // the name of the main module
 
 const isRunningInBundle = () => {
   return require("fs").existsSync(path.join(__dirname, PY_DIST_FOLDER));

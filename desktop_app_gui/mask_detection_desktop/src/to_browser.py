@@ -11,10 +11,10 @@ app = Flask(__name__)
 #video = cv2.VideoCapture(0)
 
 # video name for the file
-video = 'maske.mp4'
+#video = 'maske.mp4'
 
 # 0 <int> for the native camera
-#video = 0
+video = 0
 
 
 
