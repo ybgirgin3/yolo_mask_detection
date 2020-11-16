@@ -1,7 +1,0 @@
-[+] flask ile tarayıcı üzerinden kamera açılabiliyor.
-[+] sıradan video izlemek yerine üzerinde işlem yapılmış videoyu döndür
-[+] tarayıcıya yansıt
-electron js ile de masaüstü app haline getir.
-
-
-electron and flask: https://www.techiediaries.com/flask-electron-tutorial/
