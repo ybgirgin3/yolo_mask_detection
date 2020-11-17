@@ -1,6 +1,6 @@
 from flask import Flask, Response, render_template
 
-from engine.g_yolo import main as gmain
+#from engine.g_yolo import main as gmain
 import numpy as np
 import imutils
 import time
@@ -173,3 +173,5 @@ def video_feed():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True)
+
+vs.stop()
